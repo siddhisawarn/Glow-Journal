@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Glow Journal ✨</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>✨ Glow Journal ✨</h1>
+    <p>Your personal beauty & self-care tracker</p>
+</header>
+
+<section class="card">
+    <h2>🌸 Today's Mood</h2>
+
+    <button onclick="setMood('😊 Happy')">😊</button>
+    <button onclick="setMood('😌 Calm')">😌</button>
+    <button onclick="setMood('😴 Tired')">😴</button>
+    <button onclick="setMood('💖 Self Care')">💖</button>
+
+    <p id="mood">Choose your mood</p>
+</section>
+
+<section class="card">
+    <h2>🧴 Skincare Routine</h2>
+
+    <label>
+        <input type="checkbox"> Cleanser
+    </label>
+
+    <label>
+        <input type="checkbox"> Serum
+    </label>
+
+    <label>
+        <input type="checkbox"> Moisturizer
+    </label>
+
+    <label>
+        <input type="checkbox"> Sunscreen
+    </label>
+</section>
+
+<section class="card">
+    <h2>💄 Makeup Notes</h2>
+
+    <textarea placeholder="Write about today's makeup look..."></textarea>
+
+</section>
+
+<section class="card">
+    <h2>🛍️ Product Wishlist</h2>
+
+    <input placeholder="Add a beauty product">
+
+    <button>Add</button>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
