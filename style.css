@@ -1,29 +1,23 @@
-*{
-    box-sizing:border-box;
+body {
+
     font-family: Arial, sans-serif;
-}
-
-
-body{
-
+    background: #fff5fa;
     margin:0;
-    background:#fff5fa;
     color:#333;
 
 }
 
 
-header{
+header {
 
     text-align:center;
+    background:#ffb6d9;
     padding:30px;
-
-    background:#f8c8dc;
 
 }
 
 
-header h1{
+header h1 {
 
     margin:0;
     font-size:40px;
@@ -31,133 +25,102 @@ header h1{
 }
 
 
-
-.container{
-
-    width:90%;
-    max-width:900px;
-
-    margin:30px auto;
+.container {
 
     display:grid;
-
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
     gap:20px;
+    padding:30px;
 
 }
 
 
 
-.card{
+.card {
 
     background:white;
-
     padding:25px;
-
-    border-radius:15px;
-
+    border-radius:20px;
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
 
 }
 
 
 
-h2{
+input {
 
-    color:#d14d72;
-
-}
-
-
-
-input, textarea{
-
-    width:100%;
-
-    padding:12px;
-
-    margin:10px 0;
-
+    width:80%;
+    padding:10px;
+    border-radius:10px;
     border:1px solid #ddd;
 
-    border-radius:8px;
-
 }
 
 
 
-textarea{
+button {
 
-    height:100px;
-
-}
-
-
-
-button{
-
-    background:#d14d72;
-
+    background:#ff69b4;
     color:white;
-
     border:none;
-
     padding:10px 15px;
-
-    border-radius:20px;
-
+    border-radius:10px;
     cursor:pointer;
+    margin:5px;
+
+}
+
+
+button:hover {
+
+    background:#ff1493;
 
 }
 
 
 
-button:hover{
+li {
 
-    opacity:0.8;
-
-}
-
-
-
-li{
-
-    list-style:none;
-
-    background:#ffe4ef;
-
-    margin:8px 0;
-
+    margin:10px;
+    background:#ffe4f1;
     padding:10px;
-
-    border-radius:8px;
-
-    display:flex;
-
-    justify-content:space-between;
+    border-radius:10px;
 
 }
 
 
 
-#moodDisplay,
-#makeupDisplay{
+.delete {
 
-    margin-top:15px;
-
-    font-weight:bold;
+    float:right;
+    background:red;
+    padding:5px 10px;
 
 }
+
+
+footer {
+
+    text-align:center;
+    padding:20px;
+
+}
+
 
 
 
 @media(max-width:600px){
 
-    header h1{
+header h1{
 
-        font-size:30px;
+font-size:30px;
 
-    }
+}
+
+.container{
+
+padding:15px;
+
+}
 
 }
