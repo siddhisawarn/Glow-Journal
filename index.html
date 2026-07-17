@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Glow Journal</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,65 +18,100 @@
 </header>
 
 
-<section class="card">
+<section class="container">
 
-<h2>🌸 Daily Mood</h2>
+    <div class="card">
 
-<button onclick="setMood('Happy 😊')">Happy</button>
-<button onclick="setMood('Relaxed 🌿')">Relaxed</button>
-<button onclick="setMood('Tired 😴')">Tired</button>
+        <h2>Daily Mood</h2>
 
-<p id="moodDisplay"></p>
+        <button onclick="setMood('😊 Happy')">
+            😊 Happy
+        </button>
+
+        <button onclick="setMood('😌 Calm')">
+            😌 Calm
+        </button>
+
+        <button onclick="setMood('😴 Tired')">
+            😴 Tired
+        </button>
+
+        <p id="moodDisplay"></p>
+
+    </div>
+
+
+
+    <div class="card">
+
+        <h2>Skincare Routine</h2>
+
+
+        <input 
+        id="skincareInput"
+        placeholder="Example: Vitamin C serum">
+
+
+        <button onclick="addSkincare()">
+            Add Routine
+        </button>
+
+
+        <ul id="skincareList"></ul>
+
+    </div>
+
+
+
+
+    <div class="card">
+
+        <h2>Product Wishlist</h2>
+
+
+        <input 
+        id="productInput"
+        placeholder="Product name">
+
+
+        <button onclick="addProduct()">
+            Add Product
+        </button>
+
+
+        <ul id="productList"></ul>
+
+    </div>
+
+
+
+
+    <div class="card">
+
+        <h2>Makeup Journal</h2>
+
+
+        <textarea 
+        id="makeupInput"
+        placeholder="Write today's makeup notes">
+        </textarea>
+
+
+        <button onclick="saveMakeup()">
+            Save Entry
+        </button>
+
+
+        <p id="makeupDisplay"></p>
+
+    </div>
+
 
 </section>
-
-
-
-<section class="card">
-
-<h2>🧴 Skincare Routine</h2>
-
-<input id="skinInput" placeholder="Add skincare step">
-
-<button onclick="addSkincare()">Add</button>
-
-<ul id="skinList"></ul>
-
-</section>
-
-
-
-
-<section class="card">
-
-<h2>💄 Product Wishlist</h2>
-
-<input id="productInput" placeholder="Add product">
-
-<button onclick="addProduct()">Add</button>
-
-<ul id="productList"></ul>
-
-</section>
-
-
-
-
-<section class="card">
-
-<h2>📖 Beauty Journal</h2>
-
-<textarea id="journalInput" placeholder="Write today's thoughts..."></textarea>
-
-<button onclick="saveJournal()">Save Entry</button>
-
-<p id="journalDisplay"></p>
-
-</section>
-
 
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
