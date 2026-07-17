@@ -4,6 +4,10 @@ A personal beauty and self-care tracking web application built with HTML, CSS, a
 
 Glow Journal helps users organize skincare routines, manage product wishlists, record makeup notes, and track daily mood.
 
+## Live Demo
+
+https://siddhisawarn.github.io/Glow-Journal/
+
 ## Features
 
 - 🌸 Daily mood tracking
@@ -12,14 +16,17 @@ Glow Journal helps users organize skincare routines, manage product wishlists, r
 - 🛍️ Product wishlist management
 - 💾 Local Storage for saving user data
 - 🗑️ Add and delete functionality
-- 📱 Responsive design for different screen sizes
+- 📱 Responsive design for desktop and mobile devices
+
 
 ## Technologies Used
 
 - HTML5
 - CSS3
 - JavaScript
-- Git & GitHub
 - Browser Local Storage
+- Git & GitHub
+- GitHub Pages
+
 
 ## Project Structure
