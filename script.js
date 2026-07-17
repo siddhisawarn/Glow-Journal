@@ -1,176 +1,241 @@
-// Display mood
-function setMood(mood) {
+// Load saved data
+let skincareItems = JSON.parse(localStorage.getItem("skincare")) || [];
+let products = JSON.parse(localStorage.getItem("products")) || [];
 
-    document.getElementById("moodDisplay").innerText =
-        "Today's mood: " + mood;
+
+// Mood tracker
+function setMood(mood){
+
+    document.getElementById("moodDisplay").innerHTML =
+    "Today's Mood: " + mood;
+
 
     localStorage.setItem("mood", mood);
 }
 
 
-// Add skincare routine
-function addSkincare() {
+// Load previous mood
+let savedMood = localStorage.getItem("mood");
 
-    let input = document.getElementById("skinInput");
-    let value = input.value.trim();
+if(savedMood){
 
-    if (value === "") {
+    document.getElementById("moodDisplay").innerHTML =
+    "Today's Mood: " + savedMood;
+
+}
+
+
+
+
+// Skincare Routine
+
+function addSkincare(){
+
+    let input = document.getElementById("skincareInput");
+
+    let item = input.value;
+
+
+    if(item === ""){
         return;
     }
 
-    createListItem("skinList", value);
 
-    input.value = "";
+    skincareItems.push(item);
 
-    saveList("skinList");
+
+    localStorage.setItem(
+        "skincare",
+        JSON.stringify(skincareItems)
+    );
+
+
+    input.value="";
+
+    displaySkincare();
+
 }
 
 
-// Add product wishlist
-function addProduct() {
 
-    let input = document.getElementById("productInput");
-    let value = input.value.trim();
+function displaySkincare(){
 
-    if (value === "") {
+    let list =
+    document.getElementById("skincareList");
+
+
+    list.innerHTML="";
+
+
+    skincareItems.forEach(function(item,index){
+
+
+        let li=document.createElement("li");
+
+
+        li.innerHTML =
+        item +
+        " <button onclick='deleteSkincare("+
+        index+
+        ")'>Delete</button>";
+
+
+        list.appendChild(li);
+
+
+    });
+
+}
+
+
+
+function deleteSkincare(index){
+
+    skincareItems.splice(index,1);
+
+
+    localStorage.setItem(
+        "skincare",
+        JSON.stringify(skincareItems)
+    );
+
+
+    displaySkincare();
+
+}
+
+
+
+
+// Product Wishlist
+
+
+function addProduct(){
+
+    let input =
+    document.getElementById("productInput");
+
+
+    let product=input.value;
+
+
+    if(product===""){
         return;
     }
 
-    createListItem("productList", value);
 
-    input.value = "";
-
-    saveList("productList");
-}
+    products.push(product);
 
 
-// Create list item with delete button
-function createListItem(listId, text) {
-
-    let li = document.createElement("li");
-
-    let span = document.createElement("span");
-
-    span.innerText = text;
+    localStorage.setItem(
+        "products",
+        JSON.stringify(products)
+    );
 
 
-    let deleteButton = document.createElement("button");
-
-    deleteButton.innerText = "Delete";
+    input.value="";
 
 
-    deleteButton.onclick = function() {
-
-        li.remove();
-
-        saveList(listId);
-
-    };
-
-
-    li.appendChild(span);
-
-    li.appendChild(deleteButton);
-
-
-    document.getElementById(listId).appendChild(li);
+    displayProducts();
 
 }
 
 
 
-// Save journal entry
-function saveJournal() {
+function displayProducts(){
 
-    let entry = document.getElementById("journalInput").value;
-
-
-    document.getElementById("journalDisplay").innerText =
-        entry;
+    let list =
+    document.getElementById("productList");
 
 
-    localStorage.setItem("journal", entry);
-
-}
+    list.innerHTML="";
 
 
-
-// Save lists to local storage
-function saveList(id) {
-
-    let items = [];
+    products.forEach(function(product,index){
 
 
-    document.querySelectorAll("#" + id + " li span")
-    .forEach(function(item) {
+        let li=document.createElement("li");
 
-        items.push(item.innerText);
+
+        li.innerHTML =
+        product +
+        " <button onclick='deleteProduct("+
+        index+
+        ")'>Delete</button>";
+
+
+        list.appendChild(li);
+
 
     });
 
 
-    localStorage.setItem(id, JSON.stringify(items));
+}
+
+
+
+
+function deleteProduct(index){
+
+    products.splice(index,1);
+
+
+    localStorage.setItem(
+        "products",
+        JSON.stringify(products)
+    );
+
+
+    displayProducts();
 
 }
 
 
 
-// Load saved information
-window.onload = function() {
+
+// Makeup Journal
 
 
-    let mood = localStorage.getItem("mood");
+function saveMakeup(){
+
+    let entry =
+    document.getElementById("makeupInput").value;
 
 
-    if (mood) {
-
-        document.getElementById("moodDisplay").innerText =
-            "Today's mood: " + mood;
-
-    }
+    localStorage.setItem(
+        "makeup",
+        entry
+    );
 
 
-
-    loadList("skinList");
-
-    loadList("productList");
-
-
-
-    let journal = localStorage.getItem("journal");
-
-
-    if (journal) {
-
-        document.getElementById("journalDisplay").innerText =
-            journal;
-
-    }
-
-};
-
-
-
-// Load saved lists
-function loadList(id) {
-
-
-    let data = JSON.parse(localStorage.getItem(id));
-
-
-    if (data) {
-
-
-        data.forEach(function(item) {
-
-
-            createListItem(id, item);
-
-
-        });
-
-
-    }
-
+    displayMakeup();
 
 }
+
+
+
+function displayMakeup(){
+
+    let saved =
+    localStorage.getItem("makeup");
+
+
+    if(saved){
+
+        document.getElementById("makeupDisplay")
+        .innerHTML =
+        "Saved Entry: " + saved;
+
+    }
+
+}
+
+
+
+// Load everything when page opens
+
+displaySkincare();
+
+displayProducts();
+
+displayMakeup();
