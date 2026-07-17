@@ -1,63 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Glow Journal ✨</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow Journal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-    <h1>✨ Glow Journal ✨</h1>
-    <p>Your personal beauty & self-care tracker</p>
+    <h1>✨ Glow Journal</h1>
+    <p>Your personal beauty and self-care tracker</p>
 </header>
 
-<section class="card">
-    <h2>🌸 Today's Mood</h2>
-
-    <button onclick="setMood('😊 Happy')">😊</button>
-    <button onclick="setMood('😌 Calm')">😌</button>
-    <button onclick="setMood('😴 Tired')">😴</button>
-    <button onclick="setMood('💖 Self Care')">💖</button>
-
-    <p id="mood">Choose your mood</p>
-</section>
 
 <section class="card">
-    <h2>🧴 Skincare Routine</h2>
 
-    <label>
-        <input type="checkbox"> Cleanser
-    </label>
+<h2>🌸 Daily Mood</h2>
 
-    <label>
-        <input type="checkbox"> Serum
-    </label>
+<button onclick="setMood('Happy 😊')">Happy</button>
+<button onclick="setMood('Relaxed 🌿')">Relaxed</button>
+<button onclick="setMood('Tired 😴')">Tired</button>
 
-    <label>
-        <input type="checkbox"> Moisturizer
-    </label>
-
-    <label>
-        <input type="checkbox"> Sunscreen
-    </label>
-</section>
-
-<section class="card">
-    <h2>💄 Makeup Notes</h2>
-
-    <textarea placeholder="Write about today's makeup look..."></textarea>
+<p id="moodDisplay"></p>
 
 </section>
 
+
+
 <section class="card">
-    <h2>🛍️ Product Wishlist</h2>
 
-    <input placeholder="Add a beauty product">
+<h2>🧴 Skincare Routine</h2>
 
-    <button>Add</button>
+<input id="skinInput" placeholder="Add skincare step">
+
+<button onclick="addSkincare()">Add</button>
+
+<ul id="skinList"></ul>
 
 </section>
+
+
+
+
+<section class="card">
+
+<h2>💄 Product Wishlist</h2>
+
+<input id="productInput" placeholder="Add product">
+
+<button onclick="addProduct()">Add</button>
+
+<ul id="productList"></ul>
+
+</section>
+
+
+
+
+<section class="card">
+
+<h2>📖 Beauty Journal</h2>
+
+<textarea id="journalInput" placeholder="Write today's thoughts..."></textarea>
+
+<button onclick="saveJournal()">Save Entry</button>
+
+<p id="journalDisplay"></p>
+
+</section>
+
+
 
 <script src="script.js"></script>
 
