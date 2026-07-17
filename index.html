@@ -4,105 +4,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Glow Journal</title>
-
+    <title>Glow Journal ✨</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-    <h1>✨ Glow Journal</h1>
+    <h1>Glow Journal ✨</h1>
     <p>Your personal beauty and self-care tracker</p>
 </header>
 
 
 <section class="container">
 
+    <!-- Mood Tracker -->
     <div class="card">
+        <h2>🌸 Today's Mood</h2>
 
-        <h2>Daily Mood</h2>
-
-        <button onclick="setMood('😊 Happy')">
-            😊 Happy
-        </button>
-
-        <button onclick="setMood('😌 Calm')">
-            😌 Calm
-        </button>
-
-        <button onclick="setMood('😴 Tired')">
-            😴 Tired
-        </button>
+        <button onclick="setMood('😊 Happy')">😊 Happy</button>
+        <button onclick="setMood('😌 Calm')">😌 Calm</button>
+        <button onclick="setMood('🥰 Confident')">🥰 Confident</button>
+        <button onclick="setMood('😴 Tired')">😴 Tired</button>
 
         <p id="moodDisplay"></p>
+    </div>
+
+
+
+    <!-- Skincare -->
+    <div class="card">
+
+        <h2>🧴 Skincare Routine</h2>
+
+        <input id="skinInput" placeholder="Example: Used moisturizer">
+
+        <button onclick="addItem('skinInput','skinList')">
+            Add
+        </button>
+
+        <ul id="skinList"></ul>
 
     </div>
 
 
 
+    <!-- Makeup Journal -->
     <div class="card">
 
-        <h2>Skincare Routine</h2>
+        <h2>💄 Makeup Journal</h2>
 
+        <input id="makeupInput" placeholder="Example: Tried pink lipstick">
 
-        <input 
-        id="skincareInput"
-        placeholder="Example: Vitamin C serum">
-
-
-        <button onclick="addSkincare()">
-            Add Routine
+        <button onclick="addItem('makeupInput','makeupList')">
+            Add
         </button>
 
-
-        <ul id="skincareList"></ul>
+        <ul id="makeupList"></ul>
 
     </div>
 
 
 
-
+    <!-- Wishlist -->
     <div class="card">
 
-        <h2>Product Wishlist</h2>
+        <h2>🛍️ Product Wishlist</h2>
 
+        <input id="wishInput" placeholder="Example: Rare Beauty Blush">
 
-        <input 
-        id="productInput"
-        placeholder="Product name">
-
-
-        <button onclick="addProduct()">
-            Add Product
+        <button onclick="addItem('wishInput','wishList')">
+            Add
         </button>
 
-
-        <ul id="productList"></ul>
-
-    </div>
-
-
-
-
-    <div class="card">
-
-        <h2>Makeup Journal</h2>
-
-
-        <textarea 
-        id="makeupInput"
-        placeholder="Write today's makeup notes">
-        </textarea>
-
-
-        <button onclick="saveMakeup()">
-            Save Entry
-        </button>
-
-
-        <p id="makeupDisplay"></p>
+        <ul id="wishList"></ul>
 
     </div>
 
@@ -110,8 +85,12 @@
 </section>
 
 
+<footer>
+    <p>Created by Siddhi Sawarn 💕</p>
+</footer>
+
+
 <script src="script.js"></script>
 
 </body>
-
 </html>
