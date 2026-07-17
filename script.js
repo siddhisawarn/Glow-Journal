@@ -1,5 +1,6 @@
 // Display mood
 function setMood(mood) {
+
     document.getElementById("moodDisplay").innerText =
         "Today's mood: " + mood;
 
@@ -11,16 +12,13 @@ function setMood(mood) {
 function addSkincare() {
 
     let input = document.getElementById("skinInput");
-    let value = input.value;
+    let value = input.value.trim();
 
-    if(value === ""){
+    if (value === "") {
         return;
     }
 
-    let li = document.createElement("li");
-    li.innerText = value;
-
-    document.getElementById("skinList").appendChild(li);
+    createListItem("skinList", value);
 
     input.value = "";
 
@@ -29,19 +27,16 @@ function addSkincare() {
 
 
 // Add product wishlist
-function addProduct(){
+function addProduct() {
 
     let input = document.getElementById("productInput");
-    let value = input.value;
+    let value = input.value.trim();
 
-    if(value === ""){
+    if (value === "") {
         return;
     }
 
-    let li = document.createElement("li");
-    li.innerText = value;
-
-    document.getElementById("productList").appendChild(li);
+    createListItem("productList", value);
 
     input.value = "";
 
@@ -49,14 +44,50 @@ function addProduct(){
 }
 
 
+// Create list item with delete button
+function createListItem(listId, text) {
+
+    let li = document.createElement("li");
+
+    let span = document.createElement("span");
+
+    span.innerText = text;
+
+
+    let deleteButton = document.createElement("button");
+
+    deleteButton.innerText = "Delete";
+
+
+    deleteButton.onclick = function() {
+
+        li.remove();
+
+        saveList(listId);
+
+    };
+
+
+    li.appendChild(span);
+
+    li.appendChild(deleteButton);
+
+
+    document.getElementById(listId).appendChild(li);
+
+}
+
+
 
 // Save journal entry
-function saveJournal(){
+function saveJournal() {
 
     let entry = document.getElementById("journalInput").value;
 
+
     document.getElementById("journalDisplay").innerText =
         entry;
+
 
     localStorage.setItem("journal", entry);
 
@@ -64,13 +95,14 @@ function saveJournal(){
 
 
 
-// Save lists permanently
-function saveList(id){
+// Save lists to local storage
+function saveList(id) {
 
     let items = [];
 
-    document.querySelectorAll("#" + id + " li")
-    .forEach(function(item){
+
+    document.querySelectorAll("#" + id + " li span")
+    .forEach(function(item) {
 
         items.push(item.innerText);
 
@@ -83,17 +115,20 @@ function saveList(id){
 
 
 
-// Load saved data
-window.onload = function(){
+// Load saved information
+window.onload = function() {
+
 
     let mood = localStorage.getItem("mood");
 
-    if(mood){
+
+    if (mood) {
 
         document.getElementById("moodDisplay").innerText =
-        "Today's mood: " + mood;
+            "Today's mood: " + mood;
 
     }
+
 
 
     loadList("skinList");
@@ -101,12 +136,14 @@ window.onload = function(){
     loadList("productList");
 
 
+
     let journal = localStorage.getItem("journal");
 
-    if(journal){
+
+    if (journal) {
 
         document.getElementById("journalDisplay").innerText =
-        journal;
+            journal;
 
     }
 
@@ -114,24 +151,26 @@ window.onload = function(){
 
 
 
-// Load lists
-function loadList(id){
+// Load saved lists
+function loadList(id) {
+
 
     let data = JSON.parse(localStorage.getItem(id));
 
-    if(data){
 
-        data.forEach(function(item){
+    if (data) {
 
-            let li = document.createElement("li");
 
-            li.innerText = item;
+        data.forEach(function(item) {
 
-            document.getElementById(id)
-            .appendChild(li);
+
+            createListItem(id, item);
+
 
         });
 
+
     }
+
 
 }
